@@ -119,6 +119,10 @@ namespace MauiAppTempoAgora
             }
             catch (Exception ex)
             {
+                Debug.WriteLine("-------------------------------------------------");
+                Debug.WriteLine(ex.StackTrace);
+                Debug.WriteLine("-------------------------------------------------");
+
                 await DisplayAlert("Ops", ex.Message, "OK");
             }
         }
