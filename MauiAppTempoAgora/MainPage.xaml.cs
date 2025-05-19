@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.ObjectModel;
+using System.Diagnostics;
 using MauiAppTempoAgora.Models;
 using MauiAppTempoAgora.Services;
 
@@ -6,9 +7,12 @@ namespace MauiAppTempoAgora
 {
     public partial class MainPage : ContentPage
     {
+        ObservableCollection<Tempo> lista = new ObservableCollection<Tempo>();
+
         public MainPage()
         {
             InitializeComponent();
+            lst_produtos.ItemsSource = lista;
         }
 
         
@@ -75,6 +79,63 @@ namespace MauiAppTempoAgora
                 Debug.WriteLine(ex.StackTrace);
                 Debug.WriteLine("-------------------------------------------------");
 
+                await DisplayAlert("Ops", ex.Message, "OK");
+            }
+        }
+        private async void lst_produtos_Refreshing(object sender, EventArgs e)
+        {
+            try
+            {
+                lista.Clear();
+
+                List<Tempo> tmp = await App.Db.GetAll();
+
+                tmp.ForEach(i => lista.Add(i));
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Ops", ex.Message, "OK");
+
+            }
+            finally
+            {
+                lst_produtos.IsRefreshing = false;
+            }
+        }
+        private async void MenuItem_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                MenuItem selecinado = sender as MenuItem;
+
+                Tempo p = selecinado.BindingContext as Tempo;
+
+                bool confirm = await DisplayAlert(
+                    "Tem Certeza?", $"Remover {p.description}?", "Sim", "Não");
+
+                if (confirm)
+                {
+                    await App.Db.Delete(p.Id);
+                    lista.Remove(p);
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Ops", ex.Message, "OK");
+            }
+        }
+        protected async override void OnAppearing()
+        {
+            try
+            {
+                lista.Clear();
+
+                List<Tempo> tmp = await App.Db.GetAll();
+
+                tmp.ForEach(i => lista.Add(i));
+            }
+            catch (Exception ex)
+            {
                 await DisplayAlert("Ops", ex.Message, "OK");
             }
         }
