@@ -36,7 +36,6 @@ namespace MauiAppTempoAgora.Services
                     t = new()
                     {
                         cidade = cidade,
-                        createdDate = sunrise,
                         lat = (double)rascunho["coord"]["lat"],
                         lon = (double)rascunho["coord"]["lon"],
                         description = (string)rascunho["weather"][0]["description"],
