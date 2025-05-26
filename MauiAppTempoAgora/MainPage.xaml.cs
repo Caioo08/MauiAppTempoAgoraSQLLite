@@ -52,6 +52,8 @@ namespace MauiAppTempoAgora
                     {
                         string dados_previsao = "";
 
+                        t.data =DateTime.Now;
+
                         dados_previsao = $"Latitude: {t.lat} \n" +
                                          $"Longitude: {t.lon} \n" +
                                          $"Nascer do Sol: {t.sunrise} \n" +

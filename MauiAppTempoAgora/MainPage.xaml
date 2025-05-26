@@ -30,7 +30,7 @@
                                 <MenuItem Text="Remover" Clicked="MenuItem_Clicked"/>
                             </ViewCell.ContextActions>
                             <Grid ColumnDefinitions="200,200,200,200,200">
-                                <Label Grid.Column="0" Text="{Binding createdDate}"  Padding="5"/>
+                                <Label Grid.Column="0" Text="{Binding data}"  Padding="5"/>
                                 <Label Grid.Column="1" Text="{Binding cidade}"/>
                                 <Label Grid.Column="2" Text="{Binding temp_min}"/>
                                 <Label Grid.Column="3" Text="{Binding temp_max}"/>

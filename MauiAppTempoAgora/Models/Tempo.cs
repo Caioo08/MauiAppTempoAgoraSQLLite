@@ -12,7 +12,7 @@ namespace MauiAppTempoAgora.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public string cidade { get; set; }
-        public DateTime? createdDate { get; set; }
+        public DateTime data { get; set; }
         public double? lon { get; set; }
         public double? lat { get; set; }
         public double? temp_min { get; set; }
