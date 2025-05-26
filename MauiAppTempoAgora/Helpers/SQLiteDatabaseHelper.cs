@@ -41,7 +41,7 @@ namespace MauiAppTempoAgora.Helpers
         /// Busca produtos pela descrição
         public Task<List<Tempo>> Search(string q)
         {
-            string sql = "SELECT * FROM Produto WHERE description LIKE '%" + q + "%'";
+            string sql = "SELECT * FROM Tempo WHERE description LIKE '%" + q + "%'";
 
             return _conn.QueryAsync<Tempo>(sql);
         }

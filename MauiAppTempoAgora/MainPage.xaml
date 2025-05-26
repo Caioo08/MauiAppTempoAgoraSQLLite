@@ -14,12 +14,13 @@
                       IsPullToRefreshEnabled="True"
                       Refreshing="lst_produtos_Refreshing">
                 <ListView.Header>
-                    <Grid ColumnDefinitions="300,300,300,300"
+                    <Grid ColumnDefinitions="200,200,200,200,200"
                           BackgroundColor="{StaticResource Gray100}">
                         <Label Grid.Column="0" Text="Data" Padding="5" FontAttributes="Bold"/>
                         <Label Grid.Column="1" Text="Cidade" FontAttributes="Bold"/>
-                        <Label Grid.Column="2" Text="Temperatura" FontAttributes="Bold"/>
-                        <Label Grid.Column="3" Text="Previsão" FontAttributes="Bold"/>
+                        <Label Grid.Column="2" Text="Temp Mínima" FontAttributes="Bold"/>
+                        <Label Grid.Column="3" Text="Temp Máxima" FontAttributes="Bold"/>
+                        <Label Grid.Column="4" Text="Previsão" FontAttributes="Bold"/>
                     </Grid>
                 </ListView.Header>
                 <ListView.ItemTemplate>
@@ -28,11 +29,12 @@
                             <ViewCell.ContextActions>
                                 <MenuItem Text="Remover" Clicked="MenuItem_Clicked"/>
                             </ViewCell.ContextActions>
-                            <Grid ColumnDefinitions="300,100,100,100">
-                                <Label Grid.Column="0" Text="{Binding   }" Padding="5"/>
-                                <Label Grid.Column="1" Text="{Binding Descricao}"/>
-                                <Label Grid.Column="2" Text="{Binding Preco, StringFormat='{}{0:c}'}"/>
-                                <Label Grid.Column="3" Text="{Binding Quantidade}"/>
+                            <Grid ColumnDefinitions="200,200,200,200,200">
+                                <Label Grid.Column="0" Text="{Binding createdDate}"  Padding="5"/>
+                                <Label Grid.Column="1" Text="{Binding cidade}"/>
+                                <Label Grid.Column="2" Text="{Binding temp_min}"/>
+                                <Label Grid.Column="3" Text="{Binding temp_max}"/>
+                                <Label Grid.Column="4" Text="{Binding description}"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

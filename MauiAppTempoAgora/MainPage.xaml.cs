@@ -9,6 +9,8 @@ namespace MauiAppTempoAgora
     {
         ObservableCollection<Tempo> lista = new ObservableCollection<Tempo>();
 
+        
+
         public MainPage()
         {
             InitializeComponent();
@@ -38,12 +40,12 @@ namespace MauiAppTempoAgora
         }
         
 
-        private async void Previsao_Clicked(object sender, EventArgs e)
+        public async void Previsao_Clicked(object sender, EventArgs e)
         {
             try
             {
                 if (!string.IsNullOrEmpty(txt_cidade.Text))
-                {
+                {                    
                     Tempo? t = await DataService.GetPrevisao(txt_cidade.Text);
 
                     if (t != null)
