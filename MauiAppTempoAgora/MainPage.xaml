@@ -5,10 +5,27 @@
 
     <ScrollView>
         <VerticalStackLayout>
-            <Entry x:Name="txt_cidade" />
+            <SearchBar x:Name="txt_cidade" HorizontalOptions="FillAndExpand" Margin="0, 0, 10, 0" />
             <Button Text="Buscar Previsão" x:Name="Previsao" Clicked="Previsao_Clicked"/>
 
             <Label x:Name="lbl_res" />
+            
+
+                <StackLayout Orientation="Horizontal">
+                    <SearchBar x:Name="txt_search"
+                               HorizontalOptions="FillAndExpand"
+                              Placeholder="Busca de Previsões"
+                              TextChanged="txt_search_TextChanged">
+                        <SearchBar.Margin>
+                            <OnPlatform  x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="-15, 0, 0, 0" />
+                                <On Platform="UWP" Value="5, 0, 5, 0" />
+                            </OnPlatform>
+                        </SearchBar.Margin>
+                    </SearchBar>
+                    
+
+                </StackLayout>
 
             <ListView x:Name="lst_produtos"
                       IsPullToRefreshEnabled="True"

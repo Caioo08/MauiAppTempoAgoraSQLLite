@@ -146,6 +146,23 @@ namespace MauiAppTempoAgora
                 await DisplayAlert("Ops", ex.Message, "OK");
             }
         }
+        private async void txt_search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                string q = e.NewTextValue;
+
+                lista.Clear();
+
+                List<Tempo> tmp = await App.Db.Search(q);
+
+                tmp.ForEach(i => lista.Add(i));
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Ops", ex.Message, "OK");
+            }
+        }
     }
 
 }
