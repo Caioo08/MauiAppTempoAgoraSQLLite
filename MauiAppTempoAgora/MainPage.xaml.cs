@@ -54,7 +54,7 @@ namespace MauiAppTempoAgora
 
                         t.data =DateTime.Now;
 
-                        dados_previsao = $"Latitude: {t.lat} \n" +
+                        /*dados_previsao = $"Latitude: {t.lat} \n" +
                                          $"Longitude: {t.lon} \n" +
                                          $"Nascer do Sol: {t.sunrise} \n" +
                                          $"Por do Sol: {t.sunset} \n" +
@@ -62,9 +62,12 @@ namespace MauiAppTempoAgora
                                          $"Temp Min: {t.temp_min} \n";
 
                         lbl_res.Text = dados_previsao;
+                        */
 
                         await App.Db.Insert(t);
 
+                        lista.Clear();
+                        App.Db.GetAll().Result.ForEach(i => lista.Add(i));
                     }
                     else
                     {
